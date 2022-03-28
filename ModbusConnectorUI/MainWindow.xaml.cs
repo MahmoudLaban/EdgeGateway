@@ -70,7 +70,7 @@ namespace ModbusConnectorUI
         {
              
             aTimer = new DispatcherTimer();
-            aTimer.Interval = TimeSpan.FromMilliseconds(Convert.ToInt32(TxtInterval.Text) * 1000);
+            aTimer.Interval = TimeSpan.FromMilliseconds(Convert.ToInt32(Convert.ToDecimal(TxtInterval.Text) * 1000));
             aTimer.Tick += OnTimedEvent;
             aTimer.Start();
 

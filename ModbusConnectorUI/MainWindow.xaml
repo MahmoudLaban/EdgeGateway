@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModbusConnectorUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="800">
+        Title="HMI Developer APP" Height="750" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />

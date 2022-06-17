@@ -13,4 +13,11 @@ namespace HMIUserApp.Model
         public string Value { get; set; }
         public string ModbusAddress { get; set; }
     }
+
+    public class InsightLogData
+    {
+        public string FileName { get; set; }
+        public string Status { get; set; }
+        public string UploadedDateTime { get; set; }
+    }
 }

@@ -1,0 +1,271 @@
+﻿<Page x:Class="HMIUserApp.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMIUserApp.Pages"
+      xmlns:ts="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
+      mc:Ignorable="d" 
+      d:DesignHeight="860" d:DesignWidth="1024"
+      x:Name="MainPageUI"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="370" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Padding="5, 2" Grid.Row="0" Grid.Column="0">
+            <GroupBox Header="Modbus Communication controls" Padding="10 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Connectivity parameters</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Commnication Protocal</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Device Name</TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Device Address</TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- TCP Port</TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Data parameters</TextBlock>
+                    <TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center">- Tag Type</TextBlock>
+                    <Border Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Padding="0, 3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center">- Data Write</TextBlock>
+
+                            <Border x:Name="BorderSetValue" Grid.Column="1" Visibility="Hidden">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition Width="80"></ColumnDefinition>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox 
+                                        x:Name="AddressList" 
+                                        VerticalAlignment="Center"
+                                        Height="32"
+                                        Grid.Column="0" 
+                                        VerticalContentAlignment="Center" 
+                                    />  
+                                    <TextBlock Text="Value:" Grid.Column="1" Margin="5, 0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    <TextBox x:Name="TxtValue" Grid.Column="2" Margin="0, 0" VerticalContentAlignment="Center" />
+                                    <Button Style="{StaticResource NormalButton}" x:Name="BtnSetValue" Grid.Column="3" Content="Set Value" Margin="10, 0, 0, 0" Click="OnSetValue" />
+                                </Grid>
+                                
+                            </Border>
+                            
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10, 0">Modbus TCP</TextBlock>
+                    <ComboBox 
+                        x:Name="devicesList"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Height="32"
+                        VerticalAlignment="Center" 
+                        VerticalContentAlignment="Center" 
+                        SelectionChanged="DeviceList_SelectionChanged"
+                    >
+                        <ComboBoxItem Content="Modbus Simulator" IsSelected="True" Tag="SIM"></ComboBoxItem>
+                        <ComboBoxItem Content="T2570 PLC" Tag="PLC"></ComboBoxItem>
+                    </ComboBox>
+                    <TextBox x:Name="TxtIP" Grid.Row="4" Grid.Column="1" Margin="0, 3" VerticalContentAlignment="Center" Text="127.0.0.1" />
+                    <TextBox x:Name="TxtPort" Grid.Row="5" Grid.Column="1" Margin="0, 3" VerticalContentAlignment="Center" Text="502" />
+
+                    <ComboBox 
+                        x:Name="tagsList"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Height="32"
+                        VerticalAlignment="Center" 
+                        VerticalContentAlignment="Center" 
+                        SelectionChanged="TagsList_SelectionChanged"
+                    >
+                        <ComboBoxItem Content="Analog Input" IsSelected="True" Tag="AI"></ComboBoxItem>
+                        <ComboBoxItem Content="Analog Output" Tag="AO"></ComboBoxItem>
+                        <ComboBoxItem Content="Digital Input" Tag="CI"></ComboBoxItem>
+                        <ComboBoxItem Content="Digital Output" Tag="CO"></ComboBoxItem>
+                    </ComboBox>
+
+                    <Button 
+                        Style="{StaticResource NormalButton}"
+                        x:Name="BtnConnect" 
+                        Grid.Row="10" 
+                        Grid.Column="0" 
+                        Margin="0, 2" 
+                        Width="130"
+                        Content="Connect"
+                        Click="OnConnect" 
+                    />
+                    <Button 
+                        Style="{StaticResource NormalButton}"
+                        x:Name="BtnDisconnect" 
+                        Grid.Row="10" 
+                        Grid.Column="1" 
+                        Margin="0, 2"
+                        Width="130"
+                        Content="Disconnect"
+                        Click="OnDisconnect" 
+                    />
+                </Grid>
+            </GroupBox>
+        </Border>
+        <Border Padding="5, 2" Grid.Row="0" Grid.Column="1">
+            <GroupBox Header="Data Historization controls" Padding="10 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" VerticalAlignment="Center">Data Historiztion Settings</TextBlock>
+                    <Button Style="{StaticResource LinkButton}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to Insight Page" Click="GotoInsightPage" Cursor="Hand"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Enable History</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Storage Interval (Seconds)</TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Save to SQLite database</TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Save to CSV</TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Data Priview</TextBlock>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center">- Data preview dates</TextBlock>
+                    <Border x:Name="BorderCalendar" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Hidden">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <DatePicker x:Name="StartDate" VerticalContentAlignment="Center" FontSize="18" Height="36" SelectedDateChanged="StartDate_Changed"/>
+                            <TextBlock Text="~" Grid.Column="1" Margin="10, 0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <DatePicker x:Name="EndDate" Grid.Column="2" VerticalContentAlignment="Center" FontSize="18" Height="36" SelectedDateChanged="EndDate_Changed"/>
+                        </Grid>
+                    </Border>
+
+                    <ts:HorizontalToggleSwitch 
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        CheckedContent="Live"
+                        UncheckedContent="History" 
+                        FontSize="18" 
+                        IsChecked="True" 
+                        Padding="1" 
+                        Width="100" 
+                        Height="30" 
+                        Checked="OnChecked" 
+                        Unchecked="OnUnChecked"
+                        Tag="LiveHistory"
+                        HorizontalAlignment="Left"
+                    />
+                    <TextBox 
+                        x:Name="TxtInterval" 
+                        Grid.Row="3" 
+                        Grid.Column="1" 
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Height="30"
+                        VerticalContentAlignment="Center" 
+                        Text="1" 
+                        TextChanged="TxtInterval_TextChanged"
+                    />
+                    <ts:HorizontalToggleSwitch 
+                        Grid.Row="4"
+                        Grid.Column="1" 
+                        CheckedContent="On"
+                        UncheckedContent="Off" 
+                        FontSize="18" 
+                        IsChecked="True" 
+                        Padding="1" 
+                        Width="100" 
+                        Height="30" 
+                        Checked="OnChecked" 
+                        Unchecked="OnUnChecked"
+                        Tag="SaveDatabase"
+                        HorizontalAlignment="Left"
+                    />
+                    <ts:HorizontalToggleSwitch 
+                        Grid.Row="5"
+                        Grid.Column="1" 
+                        CheckedContent="On"
+                        UncheckedContent="Off" 
+                        FontSize="18" 
+                        IsChecked="True" 
+                        Padding="1" 
+                        Width="100" 
+                        Height="30" 
+                        Checked="OnChecked" 
+                        Unchecked="OnUnChecked"
+                        Tag="SaveCsv"
+                        HorizontalAlignment="Left"
+                    />
+                    <Button 
+                        Style="{StaticResource NormalButton}"
+                        x:Name="BtnRefresh"
+                        Grid.Row="10"
+                        Grid.Column="0" 
+                        Content="Refresh" 
+                        Width="130"
+                        Margin="0, 2" 
+                        Click="OnHistoryRefresh" 
+                    />
+                    <Button 
+                        Style="{StaticResource NormalButton}"
+                        x:Name="BtnDelete"
+                        Grid.Row="10"
+                        Grid.Column="1" 
+                        Content="Delete" 
+                        Margin="0, 2"
+                        Width="130"
+                        Click="OnDelete" 
+                    />
+                </Grid>
+            </GroupBox>
+        </Border>
+        <Border Padding="10, 0" Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="History data preview(Sqlite database)" FontWeight="Bold" TextDecorations="Underline" Grid.Column="0" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="LblLog" Text="" Grid.Column="1" HorizontalAlignment="Right" Padding="20 0" Foreground="Blue"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="10, 5">
+            <DataGrid Name="DGLogs" ColumnWidth="*"></DataGrid>
+        </Border>
+    </Grid>
+</Page>

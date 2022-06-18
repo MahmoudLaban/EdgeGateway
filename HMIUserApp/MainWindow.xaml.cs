@@ -25,6 +25,7 @@ namespace HMIUserApp
 
         public AppSettings appSettings;
         public InsightService insightService;
+        public MqttService mqttService;
         public Page MainPage;
         public Page InsightPage;
         public MainWindow()
@@ -32,6 +33,8 @@ namespace HMIUserApp
             InitializeComponent();
             appSettings = ConfigurationHelper.LoadJson();
             insightService = new InsightService(appSettings);
+            mqttService = new MqttService(appSettings);
+            mqttService.SendMessage();
             MainPage = new MainPage();
             InsightPage = new InsightPage();
             MainFrame.Content = MainPage;

@@ -21,11 +21,18 @@ namespace HMIUserApp.Service
             var deviceAuthentication = new DeviceAuthenticationWithRegistrySymmetricKey(deviceId, deviceKey);
             _deviceClient = DeviceClient.Create(iotHubHostName, deviceAuthentication, TransportType.Mqtt);
         }
+        public async Task DisconnectDeviceAsync()
+        {
+            if (_deviceClient != null)
+            {
+               await _deviceClient.CloseAsync();
+            }
+        }
         public async Task SendMessage(ModbusData data)
         {
             string messageString = JsonConvert.SerializeObject(data);
             Message message = new Message(Encoding.ASCII.GetBytes(messageString));
-            
+
             await _deviceClient.SendEventAsync(message);
 
         }

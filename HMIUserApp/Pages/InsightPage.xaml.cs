@@ -91,5 +91,29 @@ namespace HMIUserApp.Pages
             InsightLogs.ItemsSource = liveData;
             InsightLogs.Items.Refresh();
         }
+
+        private void OnConnect(object sender, RoutedEventArgs e)
+        {
+            if (TxtIoTHubName.Text == "")
+            {
+                lblError.Text = "Please fill IoTHub name";
+                return;
+            }
+            if (TxtDeviceId.Text == "")
+            {
+                lblError.Text = "Please fill Device ID";
+                return;
+            }
+            if (TxtDeviceKey.Text == "")
+            {
+                lblError.Text = "Please fill Device key";
+                return;
+            }
+            mainWindow.mqttService.ConnectDevice(TxtIoTHubName.Text, TxtDeviceId.Text, TxtDeviceKey.Text);
+        }
+        private async void OnDisConnect(object sender, RoutedEventArgs e)
+        {
+            await mainWindow.mqttService.DisconnectDeviceAsync();
+        }
     }
 }

@@ -13,9 +13,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="5*" />
             <RowDefinition Height="30" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -80,9 +80,13 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="40" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="38" />
+                        <RowDefinition Height="20" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -92,7 +96,10 @@
                     <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to AzureIoT" />
                     <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Publishing Settings</TextBlock>
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publishing to AzureIoT</TextBlock>
-                    <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Publishing time Interval</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- AzureIoT Hub Name</TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Device Id</TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Device Secret</TextBlock>
+                    <TextBlock x:Name="lblError" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Red"></TextBlock>
                     <ts:HorizontalToggleSwitch 
                         Grid.Column="1"
                         Grid.Row="2"
@@ -109,16 +116,52 @@
                         HorizontalAlignment="Left"
                     />
                     <TextBox 
-                        x:Name="TxtMQTTInterval"
+                        x:Name="TxtIoTHubName"
                         Grid.Row="3"
                         Grid.Column="1" 
-                        Width="120"
                         Height="30"
-                        HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         VerticalContentAlignment="Center" 
-                        Text="502" 
+                        Text="" 
                      />
+                    <TextBox 
+                        x:Name="TxtDeviceId"
+                        Grid.Row="4"
+                        Grid.Column="1" 
+                        Height="30"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" 
+                        Text="" 
+                     />
+                    <TextBox 
+                        x:Name="TxtDeviceKey"
+                        Grid.Row="5"
+                        Grid.Column="1" 
+                        Height="30"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" 
+                        Text="" 
+                     />
+                    <Button 
+                        Style="{StaticResource NormalButton}"
+                        x:Name="BtnConnect" 
+                        Grid.Row="6" 
+                        Grid.Column="0" 
+                        Margin="0, 2" 
+                        Width="130"
+                        Content="Connect"
+                        Click="OnConnect" 
+                    />
+                    <Button 
+                        Style="{StaticResource NormalButton}"
+                        x:Name="BtnDisconnect" 
+                        Grid.Row="6" 
+                        Grid.Column="1" 
+                        Margin="0, 2"
+                        Width="130"
+                        Content="Disconnect"
+                        Click="OnDisConnect" 
+                    />
                 </Grid>
             </GroupBox>
         </Border>

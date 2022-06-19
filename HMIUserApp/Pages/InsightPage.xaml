@@ -100,7 +100,8 @@
                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Device Id</TextBlock>
                     <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Device Secret</TextBlock>
                     <TextBlock x:Name="lblError" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Red"></TextBlock>
-                    <ts:HorizontalToggleSwitch 
+                    <ts:HorizontalToggleSwitch
+                        x:Name="TsPublishMqtt"
                         Grid.Column="1"
                         Grid.Row="2"
                         CheckedContent="On"
@@ -150,7 +151,7 @@
                         Margin="0, 2" 
                         Width="130"
                         Content="Connect"
-                        Click="OnConnect" 
+                        Click="OnConnectAsync" 
                     />
                     <Button 
                         Style="{StaticResource NormalButton}"
@@ -160,7 +161,7 @@
                         Margin="0, 2"
                         Width="130"
                         Content="Disconnect"
-                        Click="OnDisConnect" 
+                        Click="OnDisConnectAsync" 
                     />
                 </Grid>
             </GroupBox>

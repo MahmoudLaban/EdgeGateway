@@ -293,7 +293,7 @@ namespace HMIUserApp.Pages
             if (mainWindow.isUploadCsv)
             {
                 string pathString = System.IO.Path.Combine(mainWindow.appSettings.ArchiveFolderName, mainWindow.csvFileName);
-                mainWindow.insightService.UploadCSV(pathString);
+                _ = mainWindow.insightService.UploadCSV(pathString);
             }
 
             mainWindow.csvFileName = $"ModbusData_{DateTime.Now.ToString("yyyy'_'MM'_'dd'_'HH'_'mm")}.csv";
@@ -344,6 +344,17 @@ namespace HMIUserApp.Pages
                     }
                 }
 
+            }
+
+            if (mainWindow.isUploadMqtt)
+            {
+                _ = mainWindow.mqttService.SendMessageAsync(new MqttData
+                {
+                    DateTime = DateTime.Now,
+                    Value = value,
+                    TagName = tag + String.Format("{0:D5}", i + 1),
+                    ModbusAddress = String.Format("{0:D5}", address)
+                });
             }
         }
 

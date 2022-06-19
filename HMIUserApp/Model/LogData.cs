@@ -20,4 +20,12 @@ namespace HMIUserApp.Model
         public string Status { get; set; }
         public string UploadedDateTime { get; set; }
     }
+
+    public class MqttData
+    {
+        public string TagName { get; set; }
+        public DateTime DateTime { get; set; }
+        public double Value { get; set; }
+        public string ModbusAddress { get; set; }
+    }
 }

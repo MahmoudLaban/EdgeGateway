@@ -12,28 +12,50 @@ namespace HMIUserApp.Service
     {
         private AppSettings _appSettings;
         private DeviceClient _deviceClient;
+        
         public MqttService(AppSettings appSettings)
         {
             _appSettings = appSettings;
         }
-        public void ConnectDevice(string iotHubHostName, string deviceId, string deviceKey)
+        public async Task<bool> ConnectDevice(string iotHubHostName, string deviceId, string deviceKey)
         {
-            var deviceAuthentication = new DeviceAuthenticationWithRegistrySymmetricKey(deviceId, deviceKey);
-            _deviceClient = DeviceClient.Create(iotHubHostName, deviceAuthentication, TransportType.Mqtt);
+            try
+            {
+                var deviceAuthentication = new DeviceAuthenticationWithRegistrySymmetricKey(deviceId, deviceKey);
+                _deviceClient = DeviceClient.Create(iotHubHostName, deviceAuthentication, TransportType.Mqtt);
+                var task = _deviceClient.OpenAsync();
+                if (await Task.WhenAny(task, Task.Delay(10000)) == task)
+                {
+                    // task completed within timeout
+                    return true;
+                }
+                else
+                {
+                    // timeout logic
+                    return false;
+                }
+                
+            }
+            catch (Exception) {
+                Console.WriteLine("Error");
+                return false;
+            }
         }
-        public async Task DisconnectDeviceAsync()
+        public void DisconnectDevice()
         {
             if (_deviceClient != null)
             {
-               await _deviceClient.CloseAsync();
+                _deviceClient.Dispose();
+                _deviceClient = null;
             }
         }
-        public async Task SendMessage(ModbusData data)
+        public async Task SendMessageAsync(MqttData data)
         {
             string messageString = JsonConvert.SerializeObject(data);
             Message message = new Message(Encoding.ASCII.GetBytes(messageString));
 
             await _deviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
 
         }
     }

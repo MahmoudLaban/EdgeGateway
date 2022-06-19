@@ -30,6 +30,13 @@ namespace HMIUserApp.Pages
             liveData = new List<InsightLogData>();
             InsightLogs.ItemsSource = liveData;
             FetchHistoryData();
+            BtnDisconnect.IsEnabled = false;
+            TsPublishMqtt.IsEnabled = false;
+            TsPublishMqtt.IsChecked = false;
+
+            TxtDeviceId.Text = "modbus_tester";
+            TxtDeviceKey.Text = "/JCtoZyOr+yEmShtLxdaTPm4i5wZYv9mM0TeRLILnqU=";
+            TxtIoTHubName.Text = "hmiiothub.azure-devices.net";
         }
         private void OnChecked(object sender, RoutedEventArgs e)
         {
@@ -37,6 +44,9 @@ namespace HMIUserApp.Pages
             if (toggleSwitch.Tag?.ToString() == "UploadCSVDATA")
             {
                 mainWindow.isUploadCsv = true;
+            } else if(toggleSwitch.Tag?.ToString() == "UploadMQTT")
+            {
+                mainWindow.isUploadMqtt = true;
             }
 
         }
@@ -46,6 +56,10 @@ namespace HMIUserApp.Pages
             if (toggleSwitch.Tag?.ToString() == "UploadCSVDATA")
             {
                 mainWindow.isUploadCsv = false;
+            }
+            else if (toggleSwitch.Tag?.ToString() == "UploadMQTT")
+            {
+                mainWindow.isUploadMqtt = false;
             }
         }
         private async void OnUploadCsvAsync(object sender, RoutedEventArgs e)
@@ -92,7 +106,7 @@ namespace HMIUserApp.Pages
             InsightLogs.Items.Refresh();
         }
 
-        private void OnConnect(object sender, RoutedEventArgs e)
+        private async void OnConnectAsync(object sender, RoutedEventArgs e)
         {
             if (TxtIoTHubName.Text == "")
             {
@@ -109,11 +123,44 @@ namespace HMIUserApp.Pages
                 lblError.Text = "Please fill Device key";
                 return;
             }
-            mainWindow.mqttService.ConnectDevice(TxtIoTHubName.Text, TxtDeviceId.Text, TxtDeviceKey.Text);
+            
+            BtnConnect.IsEnabled = false;
+
+            BtnConnect.Content = "Connecting...";
+            BtnConnect.Background = Brushes.OrangeRed;
+            var isConnected = await mainWindow.mqttService.ConnectDevice(TxtIoTHubName.Text, TxtDeviceId.Text, TxtDeviceKey.Text);
+            BtnConnect.Content = "Connect";
+            BrushConverter bc = new BrushConverter();
+            
+            if (isConnected)
+            {
+                BtnConnect.Background = Brushes.Gray;
+                lblError.Text = "Successfully connected";
+                TsPublishMqtt.IsEnabled = true;
+                BtnDisconnect.IsEnabled = true;
+                BtnConnect.IsEnabled = false;
+            }
+            else
+            {
+                BtnConnect.Background = (Brush)bc.ConvertFrom("#009788");
+                TsPublishMqtt.IsEnabled = false;
+                TsPublishMqtt.IsChecked = false;
+                lblError.Text = "Device credential is not valid";
+                BtnConnect.IsEnabled = true;
+                BtnDisconnect.IsEnabled = false;
+            }
         }
-        private async void OnDisConnect(object sender, RoutedEventArgs e)
+        private void OnDisConnectAsync(object sender, RoutedEventArgs e)
         {
-            await mainWindow.mqttService.DisconnectDeviceAsync();
+            mainWindow.mqttService.DisconnectDevice();
+            BtnDisconnect.IsEnabled = false;
+            BtnConnect.IsEnabled = true;
+            TsPublishMqtt.IsEnabled = false;
+            TsPublishMqtt.IsChecked = false;
+            mainWindow.isUploadMqtt = false;
+            lblError.Text = "";
+            BrushConverter bc = new BrushConverter();
+            BtnConnect.Background = (Brush)bc.ConvertFrom("#009788");
         }
     }
 }

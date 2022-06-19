@@ -22,6 +22,7 @@ namespace HMIUserApp
         public string csvFileName;
         public bool isUploadCsv = true;
         public bool isSaveCsv = true;
+        public bool isUploadMqtt = false;
 
         public AppSettings appSettings;
         public InsightService insightService;

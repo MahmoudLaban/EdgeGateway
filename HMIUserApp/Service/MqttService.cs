@@ -23,6 +23,8 @@ namespace HMIUserApp.Service
             {
                 var deviceAuthentication = new DeviceAuthenticationWithRegistrySymmetricKey(deviceId, deviceKey);
                 _deviceClient = DeviceClient.Create(iotHubHostName, deviceAuthentication, TransportType.Mqtt);
+                _deviceClient.SetConnectionStatusChangesHandler(ConnectionStatusChangesHandler);
+                
                 var task = _deviceClient.OpenAsync();
                 if (await Task.WhenAny(task, Task.Delay(10000)) == task)
                 {
@@ -40,6 +42,10 @@ namespace HMIUserApp.Service
                 Console.WriteLine("Error");
                 return false;
             }
+        }
+        private void ConnectionStatusChangesHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
+        {
+
         }
         public void DisconnectDevice()
         {

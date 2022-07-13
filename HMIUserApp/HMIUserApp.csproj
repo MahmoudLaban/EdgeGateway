@@ -270,9 +270,9 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service\MqttService.cs" />
-    <Compile Include="Service\InsightService.cs" />
-    <Compile Include="Service\LogDataService.cs" />
+    <Compile Include="Service\MqttPublishSubscribeServices.cs" />
+    <Compile Include="Service\InSightPublishingService.cs" />
+    <Compile Include="Service\LocalDataLoggingService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

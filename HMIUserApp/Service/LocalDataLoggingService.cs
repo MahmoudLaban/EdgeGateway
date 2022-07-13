@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HMIUserApp.Service
 {
-    public class LogDataService
+    public class LocalDataLoggingService
     {
         private readonly ApplicationDBContext _context;
-        public LogDataService()
+        public LocalDataLoggingService()
         {
             _context = new ApplicationDBContext();
             _context.Database.EnsureCreated();

@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace HMIUserApp.Service
 {
-    public class MqttService
+    public class MqttPublishSubscribeServices
     {
         private AppSettings _appSettings;
         private DeviceClient _deviceClient;
         private MainWindow _mainWindow;
         public bool isConnected { get; set; }
         
-        public MqttService(AppSettings appSettings, MainWindow mainWindow)
+        public MqttPublishSubscribeServices(AppSettings appSettings, MainWindow mainWindow)
         {
             _appSettings = appSettings;
             _mainWindow = mainWindow;

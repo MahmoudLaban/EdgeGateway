@@ -29,7 +29,7 @@ namespace HMIUserApp.Pages
         private bool isLive = true;
         private bool isSaveDatabase = true;
         
-        private readonly LogDataService _logDataService = new LogDataService();
+        private readonly LocalDataLoggingService _logDataService = new LocalDataLoggingService();
         private DateTime startDate;
         private DateTime endDate;
 

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace HMIUserApp.Service
 {
-    public class InsightService
+    public class InSightPublishingService
     {
         private AppSettings appSettings;
-        public InsightService(AppSettings _appSettings)
+        public InSightPublishingService(AppSettings _appSettings)
         {
             appSettings = _appSettings;
         }

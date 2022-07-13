@@ -25,16 +25,16 @@ namespace HMIUserApp
         public bool isUploadMqtt = false;
 
         public AppSettings appSettings;
-        public InsightService insightService;
-        public MqttService mqttService;
+        public InSightPublishingService insightService;
+        public MqttPublishSubscribeServices mqttService;
         public Page MainPage;
         public Page InsightPage;
         public MainWindow()
         {
             InitializeComponent();
             appSettings = ConfigurationHelper.LoadJson();
-            insightService = new InsightService(appSettings);
-            mqttService = new MqttService(appSettings, this);
+            insightService = new InSightPublishingService(appSettings);
+            mqttService = new MqttPublishSubscribeServices(appSettings, this);
             MainPage = new MainPage();
             InsightPage = new InsightPage();
             MainFrame.Content = MainPage;

@@ -21,7 +21,7 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Border Padding="5, 2" Grid.Row="0" Grid.Column="0">
-            <GroupBox Header="Modbus Communication controls" Padding="10 0">
+            <GroupBox Header="Data Acquisition controls" Padding="10 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5" />
@@ -135,7 +135,7 @@
             </GroupBox>
         </Border>
         <Border Padding="5, 2" Grid.Row="0" Grid.Column="1">
-            <GroupBox Header="Data Historization controls" Padding="10 0">
+            <GroupBox Header="Local Data Logging controls" Padding="10 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5" />
@@ -153,8 +153,8 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" VerticalAlignment="Center">Data Historiztion Settings</TextBlock>
-                    <Button Style="{StaticResource LinkButton}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to Insight Page" Click="GotoInsightPage" Cursor="Hand"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" VerticalAlignment="Center">Local Data Logging settings</TextBlock>
+                    <Button Style="{StaticResource LinkButton}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to data publishing page" Click="GotoInsightPage" Cursor="Hand"/>
 
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Enable History</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Storage Interval (Seconds)</TextBlock>

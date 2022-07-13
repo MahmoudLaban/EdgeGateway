@@ -39,7 +39,7 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to Insight"/>
+                    <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to Insight web page"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Publishing Settings</TextBlock>
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publishing to InSight</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Manual Upload of CSV file</TextBlock>
@@ -93,7 +93,7 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to AzureIoT" />
+                    <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to AzureIoT web page" />
                     <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Publishing Settings</TextBlock>
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publishing to AzureIoT</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- AzureIoT Hub Name</TextBlock>

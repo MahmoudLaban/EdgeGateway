@@ -158,7 +158,7 @@
                         x:Name="BtnDisconnect" 
                         Grid.Row="6" 
                         Grid.Column="1" 
-                        Margin="0, 2"
+                        Margin="50,2,50,2"
                         Width="130"
                         Content="Disconnect"
                         Click="OnDisConnectAsync" 

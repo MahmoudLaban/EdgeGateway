@@ -14,6 +14,8 @@ namespace HMIUserApp.Service
         {
             appSettings = _appSettings;
         }
+
+        // publish csv data to Insight
         public async Task<string> UploadCSV(string pathString)
         {
             if (File.Exists(pathString))

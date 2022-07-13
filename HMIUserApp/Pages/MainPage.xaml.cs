@@ -127,6 +127,23 @@ namespace HMIUserApp.Pages
             }
         }
 
+        public void SetValueFromAzureIoTHub(ModbusData data)
+        {
+            if (modbusClient != null && modbusClient.Connected)
+            {
+                var iValue = Convert.ToInt32(data.Value);
+                int iAddress = Convert.ToInt32(data.ModbusAddress);
+                if (data.TagName == "CO")
+                {
+                    modbusClient.WriteSingleCoil(iAddress, iValue > 0);
+                }
+                else if (data.TagName == "AO")
+                {
+                    modbusClient.WriteSingleRegister(iAddress, iValue);
+                }
+                LblLog.Text = "Set value successfully";
+            }
+        }
         private async void OnDelete(object sender, RoutedEventArgs e)
         {
             MainPageUI.IsEnabled = false;
@@ -298,8 +315,6 @@ namespace HMIUserApp.Pages
 
             mainWindow.csvFileName = $"ModbusData_{DateTime.Now.ToString("yyyy'_'MM'_'dd'_'HH'_'mm")}.csv";
         }
-
-        
 
         private void AddLogData(int address, int value, string tag, int i)
         {

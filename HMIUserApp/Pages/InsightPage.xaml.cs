@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,9 +35,9 @@ namespace HMIUserApp.Pages
             TsPublishMqtt.IsEnabled = false;
             TsPublishMqtt.IsChecked = false;
 
-            TxtDeviceId.Text = "modbus_tester";
-            TxtDeviceKey.Text = "/JCtoZyOr+yEmShtLxdaTPm4i5wZYv9mM0TeRLILnqU=";
-            TxtIoTHubName.Text = "hmiiothub.azure-devices.net";
+            TxtDeviceId.Text = "modbustester";
+            TxtDeviceKey.Text = "eKtJ11YclWKjZMsUv4XhUspZlc4r97mvZmhZtnBKWc0=";
+            TxtIoTHubName.Text = "modbushub.azure-devices.net";
         }
         private void OnChecked(object sender, RoutedEventArgs e)
         {
@@ -132,7 +133,7 @@ namespace HMIUserApp.Pages
             BtnConnect.Content = "Connect";
             BrushConverter bc = new BrushConverter();
             
-            if (isConnected)
+            if (isConnected && mainWindow.mqttService.isConnected)
             {
                 BtnConnect.Background = Brushes.Gray;
                 lblError.Text = "Successfully connected";

@@ -25,7 +25,7 @@ namespace EdgeGatewayApp
         public bool isUploadMqtt = false;
 
         public AppSettings appSettings;
-        public InSightPublishingService insightService;
+        public HttpsPublishingService insightService;
         public AzureMqttPubSubServices mqttService;
         public Page MainPage;
         public Page InsightPage;
@@ -33,7 +33,7 @@ namespace EdgeGatewayApp
         {
             InitializeComponent();
             appSettings = ConfigurationHelper.LoadJson();
-            insightService = new InSightPublishingService(appSettings);
+            insightService = new HttpsPublishingService(appSettings);
             mqttService = new AzureMqttPubSubServices(appSettings, this);
             MainPage = new MainPage();
             InsightPage = new InsightPage();

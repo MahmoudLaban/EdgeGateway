@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace EdgeGatewayApp.Service
 {
-    public class InSightPublishingService
+    public class HttpsPublishingService
     {
         private AppSettings appSettings;
-        public InSightPublishingService(AppSettings _appSettings)
+        public HttpsPublishingService(AppSettings _appSettings)
         {
             appSettings = _appSettings;
         }

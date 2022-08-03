@@ -75,7 +75,7 @@
                 </Grid>
             </GroupBox>
         </Border>
-        <Border Padding="10, 10" Grid.Row="1" Grid.Column="1">
+        <Border Padding="10, 10" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
             <GroupBox Header="MQTT publishing controls" Padding="10 0">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -163,7 +163,69 @@
                         Content="Disconnect"
                         Click="OnDisConnectAsync" 
                     />
+                    <Border Grid.Row="8" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="38" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Hive MQTT</TextBlock>
+                            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publish Topic</TextBlock>
+                            <TextBox 
+                                x:Name="TxtPubTopic"
+                                Grid.Row="2"
+                                Grid.Column="1" 
+                                Height="30"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center" 
+                                Text="" 
+                             />
+                            <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Subcribe Topic</TextBlock>
+                            <TextBox 
+                                x:Name="TxtSubTopic"
+                                Grid.Row="3"
+                                Grid.Column="1" 
+                                Height="30"
+                                VerticalAlignment="Center"
+                                VerticalContentAlignment="Center" 
+                                Text="" 
+                             />
+                            <Button 
+                                Style="{StaticResource NormalButton}"
+                                x:Name="BtnHiveConnect" 
+                                Grid.Row="4" 
+                                Grid.Column="0" 
+                                Margin="0, 2" 
+                                Width="130"
+                                Content="Connect"
+                                Click="OnHiveConnectAsync" 
+                            />
+                            <Button 
+                                Style="{StaticResource NormalButton}"
+                                x:Name="BtnHiveDisconnect" 
+                                Grid.Row="4" 
+                                Grid.Column="1" 
+                                Margin="50,2,50,2"
+                                Width="130"
+                                Content="Disconnect"
+                                Click="OnHiveDisConnectAsync" 
+                            />
+                            <TextBlock x:Name="lblHiveError" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Red"></TextBlock>
+
+                        </Grid>
+                    </Border>
                 </Grid>
+                
             </GroupBox>
         </Border>
         <Border Padding="10, 0" Grid.Row="2"  Grid.Column="0">
@@ -172,5 +234,6 @@
         <Border Grid.Row="3" Grid.Column="0" Padding="10, 5">
             <DataGrid Name="InsightLogs" ColumnWidth="*"></DataGrid>
         </Border>
+        
     </Grid>
 </Page>

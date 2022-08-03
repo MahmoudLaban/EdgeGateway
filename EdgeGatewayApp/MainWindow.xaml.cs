@@ -23,10 +23,12 @@ namespace EdgeGatewayApp
         public bool isUploadCsv = true;
         public bool isSaveCsv = true;
         public bool isUploadMqtt = false;
+        public bool isPublishHiveMqtt = false;
 
         public AppSettings appSettings;
         public HttpsPublishingService insightService;
         public AzureMqttPubSubServices mqttService;
+        public HiveMQTTPubSubServices hiveMqttService;
         public Page MainPage;
         public Page InsightPage;
         public MainWindow()
@@ -35,6 +37,7 @@ namespace EdgeGatewayApp
             appSettings = ConfigurationHelper.LoadJson();
             insightService = new HttpsPublishingService(appSettings);
             mqttService = new AzureMqttPubSubServices(appSettings, this);
+            hiveMqttService = new HiveMQTTPubSubServices(appSettings, this);
             MainPage = new MainPage();
             InsightPage = new InsightPage();
             MainFrame.Content = MainPage;

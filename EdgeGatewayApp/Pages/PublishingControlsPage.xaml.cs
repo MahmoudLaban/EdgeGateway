@@ -38,6 +38,9 @@ namespace EdgeGatewayApp.Pages
             TxtDeviceId.Text = "devicetester";
             TxtDeviceKey.Text = "1YPCgcOtjJyL1qg2Ov3JW0c1r5PxlcXqeoCSom/y3s0=";
             TxtIoTHubName.Text = "modbushub.azure-devices.net";
+
+            TxtPubTopic.Text = "testing/mqtt/modbustester-pub";
+            TxtSubTopic.Text = "testing/mqtt/modbustester-sub";
         }
         private void OnChecked(object sender, RoutedEventArgs e)
         {
@@ -162,6 +165,54 @@ namespace EdgeGatewayApp.Pages
             lblError.Text = "";
             BrushConverter bc = new BrushConverter();
             BtnConnect.Background = (Brush)bc.ConvertFrom("#009788");
+        }
+
+        private async void OnHiveConnectAsync(object sender, RoutedEventArgs e)
+        {
+            if (TxtPubTopic.Text == "")
+            {
+                lblHiveError.Text = "Please fill Publish Topic";
+                return;
+            }
+            if (TxtSubTopic.Text == "")
+            {
+                lblHiveError.Text = "Please fill Subscribe Topic";
+                return;
+            }
+            BtnHiveConnect.IsEnabled = false;
+
+            BtnHiveConnect.Content = "Connecting...";
+            BtnHiveConnect.Background = Brushes.OrangeRed;
+            var isConnected = await mainWindow.hiveMqttService.ConnectHiveMqttServer(TxtPubTopic.Text, TxtSubTopic.Text);
+            BtnHiveConnect.Content = "Connect";
+            BrushConverter bc = new BrushConverter();
+
+            if (isConnected)
+            {
+                BtnHiveConnect.Background = Brushes.Gray;
+                lblHiveError.Text = "Successfully connected";
+                BtnHiveDisconnect.IsEnabled = true;
+                BtnHiveConnect.IsEnabled = false;
+                mainWindow.isPublishHiveMqtt = true;
+            }
+            else
+            {
+                BtnHiveConnect.Background = (Brush)bc.ConvertFrom("#009788");
+                lblHiveError.Text = "HiveMQTT is not available";
+                BtnHiveConnect.IsEnabled = true;
+                BtnHiveDisconnect.IsEnabled = false;
+                mainWindow.isPublishHiveMqtt = false;
+            }
+        }
+        private async void OnHiveDisConnectAsync(object sender, RoutedEventArgs e)
+        {
+            await mainWindow.hiveMqttService.DisconnectHiveMqttServerAsync();
+            BtnHiveDisconnect.IsEnabled = false;
+            BtnHiveConnect.IsEnabled = true;
+            lblError.Text = "";
+            BrushConverter bc = new BrushConverter();
+            BtnHiveConnect.Background = (Brush)bc.ConvertFrom("#009788");
+            mainWindow.isPublishHiveMqtt = false;
         }
     }
 }

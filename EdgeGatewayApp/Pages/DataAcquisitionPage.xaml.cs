@@ -141,7 +141,7 @@ namespace EdgeGatewayApp.Pages
                 {
                     modbusClient.WriteSingleRegister(iAddress, iValue);
                 }
-                LblLog.Text = "Set value successfully";
+                //LblLog.Text = "Set value successfully";
             }
         }
         private async void OnDelete(object sender, RoutedEventArgs e)
@@ -364,6 +364,16 @@ namespace EdgeGatewayApp.Pages
             if (mainWindow.isUploadMqtt)
             {
                 _ = mainWindow.mqttService.SendMessageAsync(new MqttData
+                {
+                    DateTime = DateTime.Now,
+                    Value = value,
+                    TagName = tag + String.Format("{0:D5}", i + 1),
+                    ModbusAddress = String.Format("{0:D5}", address)
+                });
+            }
+            if (mainWindow.isPublishHiveMqtt)
+            {
+                _ = mainWindow.hiveMqttService.PublishMessage(new MqttData
                 {
                     DateTime = DateTime.Now,
                     Value = value,

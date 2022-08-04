@@ -189,6 +189,10 @@
                         Unchecked="OnUnChecked"
                         Tag="LiveHistory"
                         HorizontalAlignment="Left"
+                        CheckedBackground="Gold"
+                        CheckedForeground="Gold"
+                        UncheckedBackground="Gold"
+                        UncheckedForeground="Gold"
                     />
                     <TextBox 
                         x:Name="TxtInterval" 
@@ -215,6 +219,7 @@
                         Unchecked="OnUnChecked"
                         Tag="SaveDatabase"
                         HorizontalAlignment="Left"
+                       
                     />
                     <ts:HorizontalToggleSwitch 
                         Grid.Row="5"

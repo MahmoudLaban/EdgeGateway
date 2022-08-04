@@ -156,11 +156,11 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" VerticalAlignment="Center">Local Data Logging settings</TextBlock>
                     <Button Style="{StaticResource LinkButton}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to data publishing page" Click="GotoInsightPage" Cursor="Hand"/>
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Enable History</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Data preview mode</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Storage Interval (Seconds)</TextBlock>
-                    <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Save to SQLite database</TextBlock>
-                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Save to CSV</TextBlock>
-                    <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Data Priview</TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Enable storage to SQLite</TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Enable storage to CSV</TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Data Preview</TextBlock>
                     <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center">- Data preview dates</TextBlock>
                     <Border x:Name="BorderCalendar" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Hidden">
                         <Grid>
@@ -260,7 +260,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="History data preview(Sqlite database)" FontWeight="Bold" TextDecorations="Underline" Grid.Column="0" VerticalAlignment="Bottom"/>
+                <TextBlock Text="Data preview (Live/History)" FontWeight="Bold" TextDecorations="Underline" Grid.Column="0" VerticalAlignment="Bottom"/>
                 <TextBlock x:Name="LblLog" Text="" Grid.Column="1" HorizontalAlignment="Right" Padding="20 0" Foreground="Blue"/>
             </Grid>
         </Border>

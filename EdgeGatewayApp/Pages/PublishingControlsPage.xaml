@@ -25,7 +25,7 @@
             <Button Style="{StaticResource LinkButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to MainPage" Click="GotoMainPage" Cursor="Hand"/>
         </Border>
         <Border Padding="10, 10" Grid.Row="1" Grid.Column="0">
-            <GroupBox Header="InSight publishing controls" Padding="10 0">
+            <GroupBox Header="HTTPS publishing controls" Padding="10 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20" />

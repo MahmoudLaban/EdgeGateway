@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace EdgeGatewayApp.Service
 {
-    public class HttpsPublishingService
+    public class HttpPublishingService
     {
         private AppSettings appSettings;
-        public HttpsPublishingService(AppSettings _appSettings)
+        public HttpPublishingService(AppSettings _appSettings)
         {
             appSettings = _appSettings;
         }
@@ -42,7 +42,7 @@ namespace EdgeGatewayApp.Service
                     File.Move(pathString, archiveFilePath);
                     using (StreamWriter sw = File.AppendText(appSettings.InsightLogFileName))
                     {
-                        sw.WriteLine($"{fileName}, {"UPLOADED SUCCESS"}, {DateTime.Now.ToString()}");
+                        sw.WriteLine($"{fileName}, {"UPLOAD SUCCESSFUL"}, {DateTime.Now.ToString()}");
                     }
                     return $"Uploaded {fileName} successfully";
                 }
@@ -50,7 +50,7 @@ namespace EdgeGatewayApp.Service
                 {
                     using (StreamWriter sw = File.AppendText(appSettings.InsightLogFileName))
                     {
-                        sw.WriteLine($"{fileName}, {"UPLOADED FAILED"}, {DateTime.Now.ToString()}");
+                        sw.WriteLine($"{fileName}, {"UPLOAD FAILED"}, {DateTime.Now.ToString()}");
                     }
                     return $"Uploading {fileName} failed";
                 }

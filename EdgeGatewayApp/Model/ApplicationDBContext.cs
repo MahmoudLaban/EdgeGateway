@@ -12,7 +12,7 @@ namespace EdgeGatewayApp.Model
         public DbSet<ModbusData> ModbusDatas { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=logdatas.db");
+            optionsBuilder.UseSqlite("Data Source=History.db");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

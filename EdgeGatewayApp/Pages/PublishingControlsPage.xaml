@@ -25,7 +25,7 @@
             <Button Style="{StaticResource LinkButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to MainPage" Click="GotoMainPage" Cursor="Hand"/>
         </Border>
         <Border Padding="10, 10" Grid.Row="1" Grid.Column="0">
-            <GroupBox Header="HTTPS publishing controls" Padding="10 0">
+            <GroupBox Header="HTTP publishing controls" Padding="10 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
@@ -40,8 +40,8 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to Insight web page"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Publishing Settings</TextBlock>
-                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publishing to InSight</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">InSight POST settings</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Enable InSight publishing</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- Manual Upload of CSV file</TextBlock>
                     <TextBlock x:Name="txtUploadInsightLog" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Green"></TextBlock>
 
@@ -94,8 +94,8 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Style="{StaticResource LinkButton}" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Go to AzureIoT web page" />
-                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Publishing Settings</TextBlock>
-                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publishing to AzureIoT</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">AzureIoT Pub/Sub settings</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Enable AzureIoT publishing</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- AzureIoT Hub Name</TextBlock>
                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Device Id</TextBlock>
                     <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Device Secret</TextBlock>
@@ -179,7 +179,7 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">Hive MQTT</TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Bold" TextDecorations="Underline" Grid.ColumnSpan="2" VerticalAlignment="Center">HiveMQ Pub/Sub settings</TextBlock>
                             <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Publish Topic</TextBlock>
                             <TextBox 
                                 x:Name="TxtPubTopic"

@@ -26,18 +26,18 @@ namespace EdgeGatewayApp
         public bool isPublishHiveMqtt = false;
 
         public AppSettings appSettings;
-        public HttpsPublishingService insightService;
+        public HttpPublishingService insightService;
         public AzureMqttPubSubServices mqttService;
-        public HiveMQTTPubSubServices hiveMqttService;
+        public HiveMqttPubSubServices hiveMqttService;
         public Page MainPage;
         public Page InsightPage;
         public MainWindow()
         {
             InitializeComponent();
             appSettings = ConfigurationHelper.LoadJson();
-            insightService = new HttpsPublishingService(appSettings);
+            insightService = new HttpPublishingService(appSettings);
             mqttService = new AzureMqttPubSubServices(appSettings, this);
-            hiveMqttService = new HiveMQTTPubSubServices(appSettings, this);
+            hiveMqttService = new HiveMqttPubSubServices(appSettings, this);
             MainPage = new MainPage();
             InsightPage = new InsightPage();
             MainFrame.Content = MainPage;

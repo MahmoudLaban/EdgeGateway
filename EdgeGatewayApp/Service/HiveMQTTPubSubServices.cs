@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace EdgeGatewayApp.Service
 {
-    public class HiveMQTTPubSubServices
+    public class HiveMqttPubSubServices
     {
         private AppSettings _appSettings;
         private IMqttClient _hiveMqttClient;
@@ -24,7 +24,7 @@ namespace EdgeGatewayApp.Service
         private string _pubTopic;
         private string _subTopic;
         
-        public HiveMQTTPubSubServices(AppSettings appSettings, MainWindow mainWindow)
+        public HiveMqttPubSubServices(AppSettings appSettings, MainWindow mainWindow)
         {
             _appSettings = appSettings;
             _mainWindow = mainWindow;

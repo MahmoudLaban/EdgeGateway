@@ -298,9 +298,9 @@
     <Compile Include="Pages\DataAcquisitionPage.xaml.cs">
       <DependentUpon>DataAcquisitionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service\HiveMQTTPubSubServices.cs" />
+    <Compile Include="Service\HiveMqttPubSubServices.cs" />
     <Compile Include="Service\AzureMqttPubSubServices.cs" />
-    <Compile Include="Service\HttpsPublishingService.cs" />
+    <Compile Include="Service\HttpPublishingService.cs" />
     <Compile Include="Service\LocalDataLoggingService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

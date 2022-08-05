@@ -98,7 +98,7 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">- Enable AzureIoT publishing</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">- AzureIoT Hub Name</TextBlock>
                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">- Device Id</TextBlock>
-                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Device Secret</TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">- Shared access key</TextBlock>
                     <TextBlock x:Name="lblError" Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Red"></TextBlock>
                     <ts:HorizontalToggleSwitch
                         x:Name="TsPublishMqtt"

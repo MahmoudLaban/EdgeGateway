@@ -57,7 +57,7 @@ namespace EdgeGatewayApp.Service
 
             }
 
-            return "File is not exist, please select correct file";
+            return "File does not exist, please select correct file";
         }
     }
 }

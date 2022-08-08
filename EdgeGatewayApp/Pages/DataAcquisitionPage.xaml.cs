@@ -24,7 +24,7 @@ namespace EdgeGatewayApp.Pages
         private DispatcherTimer aTimer;
         private DispatcherTimer csvTimer;
         private int timerInterval = 1;
-        private readonly int csvTimerInterval = 1; // minutes 
+        private readonly int csvTimerInterval = 10; // minutes 
         private readonly int quantity = 50;
         private bool isLive = true;
         private bool isSaveDatabase = true;

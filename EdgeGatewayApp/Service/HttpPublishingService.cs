@@ -37,7 +37,7 @@ namespace EdgeGatewayApp.Service
                 string fileName = Path.GetFileName(pathString);
                 if (response.StatusCode == HttpStatusCode.Accepted)
                 {
-                    string archiveFilePath = Path.Combine(appSettings.HistoryFolderName, fileName);
+                    string archiveFilePath = Path.Combine(appSettings.ArchiveFolderName, fileName);
                     Directory.CreateDirectory(appSettings.ArchiveFolderName);
                     File.Move(pathString, archiveFilePath);
                     using (StreamWriter sw = File.AppendText(appSettings.InsightLogFileName))

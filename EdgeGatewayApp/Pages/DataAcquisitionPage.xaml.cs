@@ -24,7 +24,7 @@ namespace EdgeGatewayApp.Pages
         private DispatcherTimer aTimer;
         private DispatcherTimer csvTimer;
         private int timerInterval = 1;
-        private readonly int csvTimerInterval = 10; // minutes 
+        private readonly int csvTimerInterval = 2; // minutes - Time duration included in CSV file (max 10 min due to InSight API size limit)
         private readonly int quantity = 50;
         private bool isLive = true;
         private bool isSaveDatabase = true;
@@ -309,7 +309,7 @@ namespace EdgeGatewayApp.Pages
         {
             if (mainWindow.isUploadCsv)
             {
-                string pathString = System.IO.Path.Combine(mainWindow.appSettings.ArchiveFolderName, mainWindow.csvFileName);
+                string pathString = System.IO.Path.Combine(mainWindow.appSettings.HistoryFolderName, mainWindow.csvFileName);
                 _ = mainWindow.insightService.UploadCSV(pathString);
             }
 

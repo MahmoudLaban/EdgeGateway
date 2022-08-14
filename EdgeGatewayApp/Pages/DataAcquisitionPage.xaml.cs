@@ -314,6 +314,7 @@ namespace EdgeGatewayApp.Pages
             }
 
             mainWindow.csvFileName = $"ModbusData_{DateTime.Now.ToString("yyyy'_'MM'_'dd'_'HH'_'mm")}.csv";
+            
         }
 
         private void AddLogData(int address, int value, string tag, int i)

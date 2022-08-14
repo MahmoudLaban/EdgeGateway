@@ -35,9 +35,9 @@ namespace EdgeGatewayApp.Pages
             TsPublishMqtt.IsEnabled = false;
             TsPublishMqtt.IsChecked = false;
 
-            TxtDeviceId.Text = "devicetester";
-            TxtDeviceKey.Text = "1YPCgcOtjJyL1qg2Ov3JW0c1r5PxlcXqeoCSom/y3s0=";
-            TxtIoTHubName.Text = "modbushub.azure-devices.net";
+            TxtDeviceId.Text = "modbustester";
+            TxtDeviceKey.Text = "vj51LZrbB8WCEg5jdg9xuXvyR3kR25+WN/aer5Mn0C4=";
+            TxtIoTHubName.Text = "iothubtester123.azure-devices.net";
 
             TxtPubTopic.Text = "testing/mqtt/modbustester-pub";
             TxtSubTopic.Text = "testing/mqtt/modbustester-sub";
@@ -79,7 +79,7 @@ namespace EdgeGatewayApp.Pages
                 BtnUpload.Content = "Upload";
                 BrushConverter bc = new BrushConverter();
                 BtnUpload.Background = (Brush)bc.ConvertFrom("#009788");
-                FetchHistoryData();
+                //FetchHistoryData();
             }
         }
 

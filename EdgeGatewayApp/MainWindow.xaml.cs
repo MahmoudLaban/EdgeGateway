@@ -35,7 +35,7 @@ namespace EdgeGatewayApp
         {
             InitializeComponent();
             appSettings = ConfigurationHelper.LoadJson();
-            insightService = new HttpPublishingService(appSettings);
+            insightService = new HttpPublishingService(appSettings, this);
             mqttService = new AzureMqttPubSubServices(appSettings, this);
             hiveMqttService = new HiveMqttPubSubServices(appSettings, this);
             MainPage = new MainPage();

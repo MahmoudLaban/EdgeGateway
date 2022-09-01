@@ -18,7 +18,7 @@ namespace EdgeGatewayApp.Service
             _mainWindow = mainWindow;
         }
 
-        // publish csv data to Insight
+        // publish csv data to InSight
         public async Task<string> UploadCSV(string pathString)
         {
             if (File.Exists(pathString))
